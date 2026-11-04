@@ -1,0 +1,8 @@
+.vscode/
+*.out
+*.test
+main.c
+*.o
+*.a
+*.tar
+libftTester*/
