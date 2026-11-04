@@ -1,6 +1,9 @@
 #include "../libft/libft.h"
 
-// 기존 libft의 list에 앞 노드를 보는 포인터가 추가된 버전
+/*
+기존 libft의 list에 앞 노드를 보는 포인터가 추가된 버전
+컨테이너 빌딩 코드를보면 순환형(Doubly Circular Linked List) 구성했지만 Double Linked List랑 구조는 같음
+*/
 typedef struct dc_list
 {
     int num;
