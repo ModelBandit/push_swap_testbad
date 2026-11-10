@@ -47,7 +47,7 @@ int main()
                 push_back(&list_b, create_node(RAND_VALUE));
             }
         }
-        else if(ft_strlen(input) == 3 && input[0] == 'r')
+        else if(ft_strlen(input) == 2 && input[0] == 'r')
         {
             if(input[1] == 'a' && list_a != NULL)
             {

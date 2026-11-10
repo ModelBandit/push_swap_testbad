@@ -13,6 +13,9 @@ List* create_node(int num)
 
 void swap(List *head)
 {
+    if(head->prev == head)
+        return;
+
     List *cur_list = head->prev;
     int temp = cur_list->num;
     cur_list->num = cur_list->prev->num;
@@ -62,11 +65,14 @@ void rotation(List *head)
 
     while(cur_node->next != head)
     {
+        // 앞에 노드의 num을 현재 노드에 저장
         cur_node->num = next_node->num;
+
+        // 각 노드를 다음 노드로 변경
         cur_node = cur_node->next;
         next_node = next_node->next;
     }
-    next_node->num = temp;
+    cur_node->num = temp;
 }
 void reverse_rotation(List *head)
 {
@@ -83,5 +89,5 @@ void reverse_rotation(List *head)
         cur_node = cur_node->prev;
         prev_node = prev_node->prev;
     }
-    prev_node->num = temp;
+    cur_node->num = temp;
 }
