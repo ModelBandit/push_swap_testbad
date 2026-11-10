@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: clang 활성 파일 빌드",
+            "label": "콘솔을 통한 시각화 기능이 포함된 빌드(need archive)",
             "command": "/usr/bin/gcc",
             "args": [
                 "-Wall",
@@ -10,7 +10,7 @@
                 "-Werror",
                 "-fdiagnostics-color=always",
                 "-g",
-                "main.c",
+                "UI_main.c",
                 "other_lib/my_list.c",
                 "util.c",
                 "push_swap.a",

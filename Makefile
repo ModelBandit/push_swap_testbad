@@ -1,4 +1,5 @@
-NAME = push_swap.a
+NAME = push_swap
+ARCHIVE = push_swap.a
 LIBFTDIR = libft/
 LIBFTC = ft_atoi.c ft_isdigit.c ft_memset.c ft_strnstr.c ft_bzero.c \
 ft_isprint.c ft_strchr.c ft_strrchr.c ft_calloc.c ft_memchr.c \
@@ -20,12 +21,17 @@ ALL_OBJECT = $(LIBFT:.c=.o) $(PUSHSWAP:.c=.o)
 CC = cc
 WARN = -Wall -Wextra -Werror
 
-all: $(NAME)
+all: $(ARCHIVE) $(NAME)
 
-$(NAME): $(OBJECT)
+visual: $(ARCHIVE)
+	$(CC) $(WARN) main.c $(PUSHSWAP) $(ARCHIVE) visualize.out
+
+$(NAME):
+	$(CC) $(WARN) s_main.c $(PUSHSWAP) $(ARCHIVE) -o $(NAME)
+
+$(ARCHIVE): $(OBJECT)
 	$(MAKE) -C $(LIBFTDIR) libft.a
-	ar rcs $(NAME) $(ALL_OBJECT)
-	$(CC) $(WARN) main.c $(PUSHSWAP) $(NAME) 
+	ar rcs $(ARCHIVE) $(ALL_OBJECT)
 	
 %.o: %.c my_std.h my_list.h
 	$(CC) $(WARN) -c $< -o $@
@@ -36,10 +42,10 @@ clean:
 
 fclean: clean
 	$(MAKE) -C $(LIBFTDIR) fclean
-	rm -f $(NAME)
+	rm -f $(ARCHIVE)
 	rm -f a.out
 
 
 re: fclean all
 	$(MAKE) -C $(LIBFTDIR) re
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re visual
