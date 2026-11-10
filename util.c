@@ -4,8 +4,6 @@
 int* build_number_array(size_t size)
 {
     int *nums = malloc(sizeof(int) * size);
-
-    srand(time(NULL));
     
     // 랜덤값 추가
     for(size_t i = 0; i < size; ++i)

@@ -5,6 +5,7 @@ void customEnv();
 
 int main()
 {
+    srand(time(NULL));
     List *list_a = build_List(build_number_array(NUM_ARR), NUM_ARR);
     List *list_b = build_List(build_number_array(NUM_ARR), NUM_ARR);
     char input[4] = "012";
@@ -12,7 +13,7 @@ int main()
     while(ft_strncmp(input, "ext", 4) != 0)
     {
         stack_print(list_a, list_b);
-        // printf("%s\n", input);
+        printf("%s\n", input);
         scanf("%s", input);
         if(input[0] == 's')
         {
@@ -82,6 +83,10 @@ int main()
                 if(list_b != NULL)
                     reverse_rotation(list_b);
             }
+        }
+        else
+        {
+            printf("error %s\n", input);
         }
     }
     return 0;

@@ -55,6 +55,7 @@ List* pop(List *head)
 
     prev_node = cur_node->prev;
     prev_node->next = head;
+    head->prev = prev_node;
     return cur_node;
 }
 void rotation(List *head)
