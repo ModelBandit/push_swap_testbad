@@ -33,10 +33,13 @@ void push_back(List **head, List *new_list)
 List* pop(List *head)
 {
     List *cur_node = head;
+    List *prev_node;
 
     while(cur_node->next != head)
         cur_node = cur_node->next;
 
+    prev_node = cur_node->prev;
+    prev_node->next = head;
     return cur_node;
 }
 void swap(List *list_a, List *list_b)

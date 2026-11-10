@@ -9,5 +9,6 @@ int main()
     visual_print(list_a, list_b, 1);
 
     clear_list(&list_a);
+    clear_list(&list_b);
     return 0;
 }
