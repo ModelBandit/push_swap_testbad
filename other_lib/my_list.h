@@ -13,6 +13,8 @@ typedef struct dc_list
 
 // 노드 생성
 List* create_node(int num);
+// 끝에 두개끼리 교환
+void swap(List *head);
 // 가장 끝 노드 뒤에 넣기
 void push_back(List **head, List *new_list);
 // 가장 마지막 노드 빼면서 반환
