@@ -24,6 +24,9 @@ void swap(List *head)
 
 void push_back(List **head, List *new_list)
 {
+    if(new_list == NULL)
+        return;
+
     List *cur_node = *head;
     if(cur_node == NULL)
     {

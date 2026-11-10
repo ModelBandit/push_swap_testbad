@@ -6,7 +6,7 @@ void customEnv();
 int main()
 {
     List *list_a = build_List(build_number_array(NUM_ARR), NUM_ARR);
-    List *list_b = NULL;
+    List *list_b = build_List(build_number_array(NUM_ARR), NUM_ARR);
     char input[4] = "012";
 
     while(ft_strncmp(input, "ext", 4) != 0)
@@ -38,13 +38,13 @@ int main()
         }
         else if(input[0] == 'p')
         {
-            if(input[1] == 'a')
+            if(input[1] == 'a' && list_b != NULL)
             {
-                push_back(&list_a, create_node(RAND_VALUE));
+                push_back(&list_a, pop(list_b));
             }
             else if(input[1] == 'b')
             {
-                push_back(&list_b, create_node(RAND_VALUE));
+                push_back(&list_b, pop(list_a));
             }
         }
         else if(ft_strlen(input) == 2 && input[0] == 'r')
