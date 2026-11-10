@@ -97,8 +97,8 @@ void stack_print(List *list_a, List *list_b)
         --i;
     }
 
-    printf("[%5s]", "a");
-    printf("[%5s]", "b");
+    printf(" %5s ", "a");
+    printf(" %5s ", "b");
     printf("\n");
 }
 

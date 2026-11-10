@@ -13,7 +13,7 @@ int main()
     while(ft_strncmp(input, "ext", 4) != 0)
     {
         stack_print(list_a, list_b);
-        printf("%s\n", input);
+        printf("command:");
         scanf("%s", input);
         if(input[0] == 's')
         {
