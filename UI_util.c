@@ -46,7 +46,7 @@ void stack_print(List *list_a, List *list_b)
     int len_b = 0;
     int i = 0;
     
-    system("clear");
+    // system("clear");
     if(list_a != NULL)
     {
         cur_a = list_a;

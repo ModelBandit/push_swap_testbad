@@ -1,5 +1,4 @@
 #include "my_list.h"
-#include <stdlib.h>
 
 List* create_node(int num)
 {
@@ -46,17 +45,26 @@ void push_back(List **head, List *new_list)
     (*head)->prev =  new_list;
 }
 
-List* pop(List *head)
+List* pop(List **head)
 {
-    List *cur_node = head;
+    List *cur_node;
     List *prev_node;
 
-    while(cur_node->next != head)
+    cur_node = *head;
+    if(cur_node->next == *head)
+    {
+        *head = NULL;
+        return cur_node;
+    }
+    
+    while(cur_node->next != *head)
         cur_node = cur_node->next;
 
     prev_node = cur_node->prev;
-    prev_node->next = head;
-    head->prev = prev_node;
+    prev_node->next = *head;
+    (*head)->prev = prev_node;
+    cur_node->next = cur_node;
+    cur_node->prev = cur_node;
     return cur_node;
 }
 void rotation(List *head)
@@ -95,4 +103,26 @@ void reverse_rotation(List *head)
         prev_node = prev_node->prev;
     }
     cur_node->num = temp;
+}
+
+int count_node(List *head)
+{
+    List *cur_node;
+    int i;
+
+    if(head == NULL)
+        return 0;
+    else if(head == head->next)
+        return 1;
+
+    cur_node = head->next;
+    i = 1;
+
+    while(cur_node != head)
+    {
+        cur_node = cur_node->next;
+        ++i;
+    }
+
+    return i;
 }

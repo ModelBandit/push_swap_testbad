@@ -12,8 +12,15 @@ ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstd
 
 LIBFT = $(addprefix $(LIBFTDIR), $(LIBFTC))
 
-PUSHSWAP = other_lib/my_list.c\
-util.c
+PUSHSWAP = data_structure/my_list.c\
+command/custom_command.c\
+command/push.c\
+command/reverse_rotate.c\
+command/rotate.c\
+command/swap.c\
+simple_sort.c\
+subject_init.c\
+UI_util.c
 
 OBJECT = $(PUSHSWAP:.c=.o)
 ALL_OBJECT = $(LIBFT:.c=.o) $(PUSHSWAP:.c=.o) 
@@ -21,12 +28,12 @@ ALL_OBJECT = $(LIBFT:.c=.o) $(PUSHSWAP:.c=.o)
 CC = cc
 WARN = -Wall -Wextra -Werror
 
-all: $(ARCHIVE) $(NAME)
+all: $(NAME)
 
 visual: $(ARCHIVE)
 	$(CC) $(WARN) UI_main.c $(PUSHSWAP) $(ARCHIVE) visualize.out
 
-$(NAME):
+$(NAME): $(ARCHIVE) 
 	$(CC) $(WARN) main.c $(PUSHSWAP) $(ARCHIVE) -o $(NAME)
 
 $(ARCHIVE): $(OBJECT)

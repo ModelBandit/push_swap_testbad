@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <time.h>
 
-#define NUM_ARR 5
 
 /* 시각화 프로그램
 괜히 과제에 꼽사리끼워두지 말것
@@ -45,11 +44,11 @@ int main()
         {
             if(input[1] == 'a' && list_b != NULL)
             {
-                push_back(&list_a, pop(list_b));
+                push_back(&list_a, pop(&list_b));
             }
             else if(input[1] == 'b')
             {
-                push_back(&list_b, pop(list_a));
+                push_back(&list_b, pop(&list_a));
             }
         }
         else if(ft_strlen(input) == 2 && input[0] == 'r')
