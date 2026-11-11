@@ -1,184 +1,68 @@
 #include "my_std.h"
 
-// 받은 인자의 크기만큼 배열반환
-int* build_number_array(size_t size)
+int init_list(char **list, char *arg_str)
 {
-    int *nums = malloc(sizeof(int) * size);
-    
-    // 랜덤값 추가
-    for(size_t i = 0; i < size; ++i)
-    {
-        // rand 반환값이 0 ~ 2147483647. modulo로 RANGE에 맞춰주고 0 기준으로 음수 표현도 가능하게 RANGE계산 추가
-        nums[i] = RAND_VALUE;
-    }
+    char **strs;
+    int i;
 
-    // 중복검사
-    for(size_t i = 0; i < size - 1; ++i)
+    if(arg_str == NULL)
     {
-        for(size_t j = i + 1; j < size; ++j)
+        *list = NULL; 
+        return 0;
+    }
+    strs = ft_split(arg_str, ' ');
+    i = 0;
+    while(strs[i] != NULL)
+    {
+        if(my_notint(strs[i]) == 1)
         {
-            if(nums[i] == nums[j])
-                nums[i] = RAND_VALUE; // 또 겹치면 뭐 안타까운거지
+            parr_release(strs);
+            return 1;
         }
+        push_back(list, create_node(ft_atoi(strs[i])));
+        free(strs[i]);
+        ++i;
     }
-
-    return nums;
+    free(strs);
+    return 0;
 }
-
-// int 배열을 받아서 list생성 후 int 배열을 해제
-List *build_List(int *nums, size_t nums_size)
+void parr_release(char **strs)
 {
-    List *list = NULL;
-    for(size_t i = 0; i < nums_size; ++i)
-    {
-        push_back(&list, create_node(nums[i]));
-    }
-
-    free(nums);
-    return list;
-}
-void stack_print(List *list_a, List *list_b)
-{
-    List *cur_a = NULL;
-    List *cur_b = NULL;
-    int len_a = 0;
-    int len_b = 0;
     int i = 0;
-    
-    system("clear");
-    if(list_a != NULL)
+    while(strs[i] != NULL)
     {
-        cur_a = list_a;
-        while(cur_a->next != list_a)
-        {
-            ++len_a;
-            cur_a = cur_a->next;
-        }
-        cur_a = list_a->prev;
+        free(strs[i]);
+        ++i;
     }
-    if(list_b != NULL)
-    {
-        cur_b = list_b;
-        while(cur_b->next != list_b)
-        {
-            ++len_b;
-            cur_b = cur_b->next;
-        }
-        cur_b = list_b->prev;
-    }
-    printf("\n");
-
-    if(len_a > len_b)
-        i = len_a;
-    else
-        i = len_b;
-
-    while(i >= 0)
-    {
-        if(list_a != NULL && i <= len_a)
-        {
-            printf("[%5d]", cur_a->num);
-            cur_a = cur_a->prev;
-        }
-        else
-        {
-            printf("[%5s]", "");
-        }
-        if(list_b != NULL && i <= len_b)
-        {
-            printf("[%5d]", cur_b->num);
-            cur_b = cur_b->prev;
-        }
-        else
-        {
-            printf("[%5s]", "");
-        }
-        printf("\n");
-        --i;
-    }
-
-    printf(" %5s ", "a");
-    printf(" %5s ", "b");
-    printf("\n");
+    free(strs);
 }
 
-// 그냥 출력용으로 막찍은 함수
-void visual_print(List *list_a, List *list_b, int fd)
+int my_notint(const char *str)
 {
-    List *cur_a = list_a;
-    List *cur_b = list_b;
-    int i = 0;
-
-    ft_putstr_fd("\e[43m", fd);
-    while(cur_a != NULL && cur_a->next != list_a)
-    {
-        ft_putstr_fd("                                ", fd);
-        cur_a = cur_a->next;
-    }
-    ft_putendl_fd("\e[0m", fd);
-    cur_a = list_a;
-
-    ft_putstr_fd("stack A:\t", fd);
-    while(cur_a != NULL && cur_a->next != list_a)
-    {
-        ft_putchar_fd('(', fd);
-        ft_putnbr_fd(i++, fd);
-        ft_putchar_fd(')', fd);
-        ft_putnbr_fd(cur_a->num, fd);
-        ft_putstr_fd("\t│\t", fd);
-        cur_a = cur_a->next;
-    }
-    if(cur_a != NULL)
-    {
-        ft_putchar_fd('(', fd);
-        ft_putnbr_fd(i, fd);
-        ft_putchar_fd(')', fd);
-        ft_putnbr_fd(cur_a->num, fd);
-    }
-    ft_putchar_fd('\n', fd);
+    int i;
+    int len;
+    int str_values;
 
     i = 0;
-    ft_putstr_fd("stack B:\t", fd);
-    while(cur_b != NULL && cur_b->next != list_b)
-    {
-        ft_putchar_fd('(', fd);
-        ft_putnbr_fd(i++, fd);
-        ft_putchar_fd(')', fd);
-        ft_putnbr_fd(cur_b->num, fd);
-        ft_putstr_fd("\t│\t", fd);
-        cur_b = cur_b->next;
-    }
-    if(cur_b != NULL)
-    {
-        ft_putchar_fd('(', fd);
-        ft_putnbr_fd(i, fd);
-        ft_putchar_fd(')', fd);
-        ft_putnbr_fd(cur_b->num, fd);
-    }
-    ft_putchar_fd('\n', fd);
+    len = ft_strlen(str);
+    str_values = 0;
 
-    cur_a = list_a;
-    ft_putstr_fd("\e[43m", fd);
-    while(cur_a != NULL && cur_a->next != list_a)
+    if((str[0] == '-' && len > 12) || (str[0] != '-' && len > 11))
+        return 1;
+    if(str[i] == '-')
+        i = 1;
+
+    while(i < len)
     {
-        ft_putstr_fd("                                ", fd);
-        cur_a = cur_a->next;
+        if(ft_isdigit(str[i]) == 0)
+            return 1;
+        str_values += (int)(str[i]);
     }
-    ft_putendl_fd("\e[0m", fd);
+    if((str[0] == '-' && str_values > 572) || (str[0] != '-' && str_values > 526))
+        return 1;
+    
+    return 0;
 }
 
-// 리스트 메모리 해제
-void clear_list(List **list)
-{
-    if(list == NULL || *list == NULL)
-        return;
-        
-    List *cur= (*list);
-    while(cur->next != (*list))
-    {
-        cur = cur->next;
-        free(cur);
-    }
-    free(*list);
-    *list = NULL;
-}
+    // min = "-2147483648"; // 572
+    // max = "2147483647"; // 526

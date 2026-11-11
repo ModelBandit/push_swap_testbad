@@ -12,7 +12,35 @@
                 "-g",
                 "UI_main.c",
                 "other_lib/my_list.c",
-                "util.c",
+                "UI_util.c",
+                "push_swap.a",
+                "-o",
+                "${fileDirname}/a.out"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "디버거에서 생성된 작업입니다."
+        },
+        {
+            "type": "cppbuild",
+            "label": "과제 제출용 프로그램 빌드",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "-fdiagnostics-color=always",
+                "-g",
+                "main.c",
+                "other_lib/my_list.c",
                 "push_swap.a",
                 "-o",
                 "${fileDirname}/a.out"

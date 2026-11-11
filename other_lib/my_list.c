@@ -1,4 +1,5 @@
 #include "my_list.h"
+#include <stdlib.h>
 
 List* create_node(int num)
 {

@@ -1,4 +1,3 @@
-#include "../libft/libft.h"
 
 /*
 기존 libft의 list에 앞 노드를 보는 포인터가 추가된 버전

@@ -24,10 +24,10 @@ WARN = -Wall -Wextra -Werror
 all: $(ARCHIVE) $(NAME)
 
 visual: $(ARCHIVE)
-	$(CC) $(WARN) main.c $(PUSHSWAP) $(ARCHIVE) visualize.out
+	$(CC) $(WARN) UI_main.c $(PUSHSWAP) $(ARCHIVE) visualize.out
 
 $(NAME):
-	$(CC) $(WARN) s_main.c $(PUSHSWAP) $(ARCHIVE) -o $(NAME)
+	$(CC) $(WARN) main.c $(PUSHSWAP) $(ARCHIVE) -o $(NAME)
 
 $(ARCHIVE): $(OBJECT)
 	$(MAKE) -C $(LIBFTDIR) libft.a

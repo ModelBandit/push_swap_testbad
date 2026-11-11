@@ -1,4 +1,7 @@
 #include "my_std.h"
+#include <stdio.h>
+#include <time.h>
+
 #define NUM_ARR 5
 
 /* 시각화 프로그램
