@@ -47,8 +47,6 @@ int my_notint(const char *str)
     len = ft_strlen(str);
     str_values = 0;
 
-    if((str[0] == '-' && len > 12) || (str[0] != '-' && len > 11))
-        return 1;
     if(str[i] == '-')
         i = 1;
 
@@ -63,6 +61,7 @@ int my_notint(const char *str)
     
     return 0;
 }
-
-    // min = "-2147483648"; // 572
-    // max = "2147483647"; // 526
+/*  각 문자들 전부 더한 값
+    min = "-2147483648"; // 572
+    max = "2147483647"; // 526
+*/
