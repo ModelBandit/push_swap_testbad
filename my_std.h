@@ -7,7 +7,7 @@
 #endif
 
 // 랜덤 배열 생성용
-#define NUM_ARR 100
+#define NUM_ARR 7
 #define MY_RANDOM_RANGE 1000
 #define RAND_VALUE (rand() % MY_RANDOM_RANGE) - (MY_RANDOM_RANGE*0.5)
 
@@ -21,6 +21,8 @@ int progress_cmp(const char *origin, const char *other);
 
 // simple sort
 void bubble(List **list_a, List **list_b);
+void selection(List **list_a, List **list_b);
+void insert(List **list_a, List **list_b);
 
 // visual
 int* build_number_array(size_t size);
