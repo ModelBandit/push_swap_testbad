@@ -96,6 +96,7 @@ void reverse_rotation(List *head)
     while(cur_node->prev != head)
     {
         cur_node->num = prev_node->num;
+        
         cur_node = cur_node->prev;
         prev_node = prev_node->prev;
     }

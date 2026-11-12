@@ -1,9 +1,8 @@
 #include "print_command.h"
-
+#include <stdio.h>
 
 void swap_other_node(List **node_a, List **node_b)
 {
-
     if(*node_a == NULL || *node_b == NULL)
         return;
     if((*node_a)->num > (*node_b)->num)

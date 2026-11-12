@@ -7,7 +7,7 @@
 #endif
 
 // 랜덤 배열 생성용
-#define NUM_ARR 16
+#define NUM_ARR 100
 #define MY_RANDOM_RANGE 1000
 #define RAND_VALUE (rand() % MY_RANDOM_RANGE) - (MY_RANDOM_RANGE*0.5)
 

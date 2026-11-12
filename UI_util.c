@@ -46,24 +46,26 @@ void stack_print(List *list_a, List *list_b)
     int len_b = 0;
     int i = 0;
     
-    // system("clear");
+    system("clear");
     if(list_a != NULL)
     {
         cur_a = list_a;
-        while(cur_a->next != list_a)
+        while(cur_a->prev != list_a)
         {
             ++len_a;
-            cur_a = cur_a->next;
+            cur_a = cur_a->prev;
         }
+        cur_a = list_a;
     }
     if(list_b != NULL)
     {
         cur_b = list_b;
-        while(cur_b->next != list_b)
+        while(cur_b->prev != list_b)
         {
             ++len_b;
-            cur_b = cur_b->next;
+            cur_b = cur_b->prev;
         }
+        cur_b = list_b;
     }
     printf("\n");
 

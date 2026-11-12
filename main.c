@@ -1,4 +1,5 @@
 #include "my_std.h"
+#include "stdio.h"
 
 int count = 0;
 /* 제출용 프로그램
@@ -23,11 +24,13 @@ int main(int argc, char **argv)
             return 1;
     }
     
-    stack_print(list_a, list_b);
+    // stack_print(list_a, list_b);
     // if(ft_strncmp(argv[1], "--simple", ft_strlen(argv[1])) == 0)
         bubble(&list_a, &list_b);
+    // stack_print(list_a, list_b);
     print_count_init();
-    stack_print(list_a, list_b);
 
+    clear_list(&list_a);
+    clear_list(&list_b);
 }
 
