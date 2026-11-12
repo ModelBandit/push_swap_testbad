@@ -3,22 +3,14 @@
 
 void swap_other_node(List **node_a, List **node_b)
 {
-    List *temp1;
-    List *temp2;
+
     if(*node_a == NULL || *node_b == NULL)
         return;
-
-    temp1 = pop(node_a);
-    temp2 = pop(node_b);
-    if(temp1->num > temp2->num)
+    if((*node_a)->num > (*node_b)->num)
     {
-        print_with_push(node_a, &temp2, "pa");
-        print_with_push(node_b, &temp1, "pb");
-    }
-    else
-    {
-        print_with_push(node_a, &temp1, "pa");
-        print_with_push(node_b, &temp2, "pb");
+        print_with_push(node_a, node_b, "pa");
+        print_with_swap(*node_a, "sa");
+        print_with_push(node_b, node_a, "pb");
     }
 }
 

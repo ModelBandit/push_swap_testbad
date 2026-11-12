@@ -41,6 +41,7 @@
                 "-g",
                 "main.c",
                 "command/custom_command.c",
+                "command/push.c",
                 "data_structure/my_list.c",
                 "subject_init.c",
                 "simple_sort.c",

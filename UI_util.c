@@ -55,7 +55,6 @@ void stack_print(List *list_a, List *list_b)
             ++len_a;
             cur_a = cur_a->next;
         }
-        cur_a = list_a->prev;
     }
     if(list_b != NULL)
     {
@@ -65,7 +64,6 @@ void stack_print(List *list_a, List *list_b)
             ++len_b;
             cur_b = cur_b->next;
         }
-        cur_b = list_b->prev;
     }
     printf("\n");
 
@@ -79,7 +77,7 @@ void stack_print(List *list_a, List *list_b)
         if(list_a != NULL && i <= len_a)
         {
             printf("[%5d]", cur_a->num);
-            cur_a = cur_a->prev;
+            cur_a = cur_a->next;
         }
         else
         {
@@ -88,7 +86,7 @@ void stack_print(List *list_a, List *list_b)
         if(list_b != NULL && i <= len_b)
         {
             printf("[%5d]", cur_b->num);
-            cur_b = cur_b->prev;
+            cur_b = cur_b->next;
         }
         else
         {

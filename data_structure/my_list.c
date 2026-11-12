@@ -13,13 +13,13 @@ List* create_node(int num)
 
 void swap(List *head)
 {
-    if(head->prev == head)
+    if(head == NULL || head->next == head )
         return;
 
-    List *cur_list = head->prev;
-    int temp = cur_list->num;
-    cur_list->num = cur_list->prev->num;
-    cur_list->prev->num = temp;
+    List *next_list = head->next;
+    int temp = next_list->num;
+    next_list->num = head->num;
+    head->num = temp;
 }
 
 void push_back(List **head, List *new_list)
@@ -36,19 +36,17 @@ void push_back(List **head, List *new_list)
         return;
     }
 
-    while(cur_node->next != *head)
-        cur_node = cur_node->next;
+    new_list->next = cur_node;
+    new_list->prev = cur_node->prev;
+    cur_node->prev->next = new_list;
+    cur_node->prev = new_list;
 
-    cur_node->next = new_list;
-    new_list->prev = cur_node;
-    new_list->next = *head;
-    (*head)->prev =  new_list;
+    *head = new_list;
 }
 
 List* pop(List **head)
 {
     List *cur_node;
-    List *prev_node;
 
     cur_node = *head;
     if(cur_node->next == *head)
@@ -56,15 +54,14 @@ List* pop(List **head)
         *head = NULL;
         return cur_node;
     }
-    
-    while(cur_node->next != *head)
-        cur_node = cur_node->next;
 
-    prev_node = cur_node->prev;
-    prev_node->next = *head;
-    (*head)->prev = prev_node;
+    cur_node->prev->next = cur_node->next;
+    cur_node->next->prev = cur_node->prev;
+    (*head) = cur_node->next;
+
     cur_node->next = cur_node;
     cur_node->prev = cur_node;
+
     return cur_node;
 }
 void rotation(List *head)
