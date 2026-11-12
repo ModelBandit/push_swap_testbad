@@ -45,8 +45,9 @@ void stack_print(List *list_a, List *list_b)
     int len_a = 0;
     int len_b = 0;
     int i = 0;
+    int max = 0;
     
-    system("clear");
+    // system("clear");
     if(list_a != NULL)
     {
         cur_a = list_a;
@@ -70,9 +71,15 @@ void stack_print(List *list_a, List *list_b)
     printf("\n");
 
     if(len_a > len_b)
+    {
         i = len_a;
+        max = len_a;
+    }
     else
+    {
         i = len_b;
+        max = len_b;
+    }
 
     while(i >= 0)
     {
@@ -93,6 +100,14 @@ void stack_print(List *list_a, List *list_b)
         else
         {
             printf("[%5s]", "");
+        }
+        if(i == max)
+        {
+            printf(" - %s", "HEAD");
+        }
+        else if(i == 0)
+        {
+            printf(" - %s", "TAIL");
         }
         printf("\n");
         --i;
