@@ -1,88 +1,93 @@
 #include "my_std.h"
-/* 조건 v1
-데이터 탐색 및 이동은 가능하면 명령어를 통해서 할 것.
 
-후기
-- rot swap이나 pop push로 컨트롤해야되다보니 교환이 번거로움
-- 탐색은 결국 변수를 하나 더 쓰거나 next/prev가 필요함 - 탐색관련 타협 필요
+/* 조건 v2
+데이터 탐색은 next/prev로 가능
+사유: 탐색까지 명령어로 한다쳐도 결국 변수를 하나 쓰거나 next/prev를 써야하니 채택
+
+데이터 이동은 명령어를 기반으로 작업
+
+문제: rot swap이나 pop push로 컨트롤해야되다보니 교환이 번거로움
 */
 
-// 하나 지정하고 남은 풀중에서 비교하면서 탐색함
-void bubble(List **list_a, List **list_b)
+void bubble(List **list_a)
 {
-    int len;
+    int len = count_node(*list_a) - 1;
+    int sorted_count = 0;
+    int i;
 
-    // 비교를 위해 다른 변수에 빼두거나 탐색할게 아니라면 비교대상을 b에 빼두는식으로 채용
-    print_with_push(list_b, list_a, "pb");
-    
-    while(*list_a != NULL)
+    while(len - sorted_count > 0)
     {
-        // stack_print(*list_a, *list_b);
-        // 순환 리스트라 끝을 따로 지정하지 않았으니 남은 풀의 갯수를 알아내기
-        len = count_node(*list_a);
-        while(len > 0)
+        // stack_print(*list_a, *list_a);
+        i = 0;
+        while(i < len - sorted_count)
         {
-            // 조건검사 + 위치교환
-            swap_other_node(list_a, list_b);
-            --len;
-            // 다음 노드로
-            print_with_reverse_rotate(*list_a, "rra");
-        }
-        // 새로운 검사대상 지정
-        print_with_push(list_b, list_a, "pb");
-    }
-    // 정렬된걸 다시 돌려넣음
-    while(*list_b != NULL)
-        print_with_push(list_a, list_b, "pa");
-}
-
-// 일단 넘긴 풀(list b)에서 자리잡는 스타일
-void selection(List **list_a, List **list_b)
-{
-    int len;
-
-    while(*list_a != NULL)
-    {
-        print_with_push(list_b, list_a, "pb");
-        len = count_node(*list_b) - 1;
-        while(len > 0)
-        {
-            if((*list_b)->num > (*list_b)->next->num)
-            {
-                print_with_swap(*list_b, "sb");
-                // stack_print(*list_a, *list_b);
-            }
-            print_with_rotate(*list_b, "rb");
-            // stack_print(*list_a, *list_b);
-            --len;
-        }
-        print_with_rotate(*list_b, "rb");
-    }
-
-    while(*list_b != NULL)
-        print_with_push(list_a, list_b, "pa");
-}
-// 넣기전에 가장 큰/작은애를 찾아서 넣는 스타일
-void insert(List **list_a, List **list_b)
-{
-    int len;
-
-    while(*list_a != NULL)
-    {
-        // stack_print(*list_a, *list_b);
-        len = count_node(*list_a);
-        while(len > 0)
-        {
+            // stack_print(*list_a, *list_a);
             if((*list_a)->num > (*list_a)->next->num)
             {
-                // stack_print(*list_a, *list_b);
                 print_with_swap(*list_a, "sa");
-                // stack_print(*list_a, *list_b);
+                // stack_print(*list_a, *list_a);
             }
-            --len;
             print_with_rotate(*list_a, "ra");
+            ++i;
+        }
+        i = 0;
+        ++sorted_count;
+        // stack_print(*list_a, *list_a);
+        while(i < sorted_count)
+        {
+            print_with_rotate(*list_a, "ra");
+            ++i;
+        }
+        // stack_print(*list_a, *list_a);
+    }
+}
+
+void selection(List **list_a, List **list_b)
+{
+    int target_value;
+    int target_index;
+    int len;
+    int i;
+
+    while(*list_a != NULL)
+    {
+        // stack_print(*list_a, *list_b);
+        target_value = 0;
+        target_index = 0;
+        len = count_node(*list_a);
+        i = 0;
+        while(i < len)
+        {
+            // stack_print(*list_a, *list_b);
+            if(target_index == 0 || target_value > (*list_a)->num)
+            {
+                target_value = (*list_a)->num;
+                target_index = i;
+            }
+            (*list_a) = (*list_a)->next;
+            ++i;
+        }
+        while((*list_a)->num != target_value) 
+        {
+            if(target_index < len / 2)
+                print_with_rotate(*list_a, "ra");
+            else
+                print_with_reverse_rotate(*list_a, "rra");
         }
         print_with_push(list_b, list_a, "pb");
+        // stack_print(*list_a, *list_b);
+    }
+    while(*list_b != NULL)
+        print_with_push(list_a, list_b, "pa");
+}
+
+void insert(List **list_a, List **list_b)
+{
+    while(*list_a != NULL)
+    {
+        print_with_push(list_b, list_a, "pb");
+        if((*list_b)->num < (*list_b)->next->num)
+            print_with_rotate(*list_b, "rb");
     }
 
     while(*list_b != NULL)

@@ -48,6 +48,8 @@ List* pop(List **head)
 {
     List *cur_node;
 
+    if(*head == NULL)
+        return NULL;
     cur_node = *head;
     if(cur_node->next == *head)
     {
@@ -64,6 +66,7 @@ List* pop(List **head)
 
     return cur_node;
 }
+// HEAD TO TAIL
 void rotation(List *head)
 {
     if(head == NULL)
@@ -84,6 +87,8 @@ void rotation(List *head)
     }
     cur_node->num = temp;
 }
+
+// TAIL TO HEAD
 void reverse_rotation(List *head)
 {
     if(head == NULL)

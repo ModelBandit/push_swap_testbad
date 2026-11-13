@@ -7,7 +7,7 @@
 #endif
 
 // 랜덤 배열 생성용
-#define NUM_ARR 7
+#define NUM_ARR 5
 #define MY_RANDOM_RANGE 1000
 #define RAND_VALUE (rand() % MY_RANDOM_RANGE) - (MY_RANDOM_RANGE*0.5)
 
@@ -20,8 +20,21 @@ int check_intedge(const char *str);
 int progress_cmp(const char *origin, const char *other);
 
 // simple sort
-void bubble(List **list_a, List **list_b);
+
+/* 버블 정렬
+정렬안된 다른 노드의 값들을 비교하며 정렬하는 스타일
+비교하며 정렬하는게 특징
+*/
+void bubble(List **list_a);
+/* 선택 정렬
+정렬안된 범위 내에서 대상을 특정하고 정렬하는 스타일
+대상부터 선정하는게 특징
+*/
 void selection(List **list_a, List **list_b);
+/* 삽입 정렬
+일단 넘긴 풀(list b)에서 자리잡는 스타일
+자리 만들고 꽂는게 특징
+*/
 void insert(List **list_a, List **list_b);
 
 // visual

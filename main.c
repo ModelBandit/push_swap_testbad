@@ -30,6 +30,8 @@ int main(int argc, char **argv)
     // 대충 그냥 컴파일 때렸다는 뜻
     if(argc == 1)
     {
+        // bubble(&list_a);
+        // selection(&list_a, &list_b);
         insert(&list_a, &list_b);
     }
     else

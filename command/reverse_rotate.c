@@ -8,6 +8,7 @@ void print_with_reverse_rotate(List *head, const char *str)
     ++count;
 }
 
+// TAIL TO HEAD
 void print_with_reverse_rotaterotate(List *list_a, List *list_b)
 {
     ft_putendl_fd("rrr", 1);
