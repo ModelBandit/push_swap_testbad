@@ -1,4 +1,11 @@
 #include "my_std.h"
+/* 조건 v1
+데이터 탐색 및 이동은 가능하면 명령어를 통해서 할 것.
+
+후기
+- rot swap이나 pop push로 컨트롤해야되다보니 교환이 번거로움
+- 탐색은 결국 변수를 하나 더 쓰거나 next/prev가 필요함 - 탐색관련 타협 필요
+*/
 
 // 하나 지정하고 남은 풀중에서 비교하면서 탐색함
 void bubble(List **list_a, List **list_b)
