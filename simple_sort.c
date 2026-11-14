@@ -83,11 +83,26 @@ void selection(List **list_a, List **list_b)
 
 void insert(List **list_a, List **list_b)
 {
+    int max_rot;
+
+    print_with_push(list_b, list_a, "pb");
     while(*list_a != NULL)
     {
-        print_with_push(list_b, list_a, "pb");
-        if((*list_b)->num < (*list_b)->next->num)
+        // stack_print(*list_a, *list_b);
+        max_rot = count_node(*list_b) - 1;
+        while(max_rot >= 0)
+        {
+            if((*list_a)->num > (*list_b)->num)
+                break;
             print_with_rotate(*list_b, "rb");
+            --max_rot;
+        }
+        print_with_push(list_b, list_a, "pb");
+        while((*list_b)->num < (*list_b)->next->num
+           || (*list_b)->num < (*list_b)->prev->num)
+            print_with_rotate(*list_b, "rb");
+
+        // stack_print(*list_a, *list_b);
     }
 
     while(*list_b != NULL)

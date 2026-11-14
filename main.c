@@ -31,8 +31,9 @@ int main(int argc, char **argv)
     if(argc == 1)
     {
         // bubble(&list_a);
-        // selection(&list_a, &list_b);
-        insert(&list_a, &list_b);
+        selection(&list_a, &list_b);
+        // print_count_init();
+        // insert(&list_a, &list_b);
     }
     else
     {

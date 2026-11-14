@@ -90,7 +90,7 @@ void stack_print(List *list_a, List *list_b)
         }
         else
         {
-            printf("[%5s]", "");
+            printf("%7s", "");
         }
         if(list_b != NULL && i <= len_b)
         {
@@ -99,7 +99,7 @@ void stack_print(List *list_a, List *list_b)
         }
         else
         {
-            printf("[%5s]", "");
+            printf("%7s", "");
         }
         if(i == max)
         {
