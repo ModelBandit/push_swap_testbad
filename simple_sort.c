@@ -42,24 +42,24 @@ void bubble(List **list_a)
     }
 }
 
-void selection(List **list_a, List **list_b)
+void selection(List **list_a)
 {
     int target_value;
     int target_index;
-    int len;
+    int len = count_node(*list_a);
     int i;
+    int sorted_count = 0;
 
-    while(*list_a != NULL)
+    while(sorted_count < len)
     {
         // stack_print(*list_a, *list_b);
         target_value = 0;
-        target_index = 0;
-        len = count_node(*list_a);
+        target_index = -1;
         i = 0;
-        while(i < len)
+        while(i < len - sorted_count)
         {
             // stack_print(*list_a, *list_b);
-            if(target_index == 0 || target_value > (*list_a)->num)
+            if(target_index == -1 || target_value < (*list_a)->num)
             {
                 target_value = (*list_a)->num;
                 target_index = i;
@@ -67,6 +67,7 @@ void selection(List **list_a, List **list_b)
             (*list_a) = (*list_a)->next;
             ++i;
         }
+        // stack_print(*list_a, *list_a);
         while((*list_a)->num != target_value) 
         {
             if(target_index < len / 2)
@@ -74,28 +75,40 @@ void selection(List **list_a, List **list_b)
             else
                 print_with_reverse_rotate(*list_a, "rra");
         }
-        print_with_push(list_b, list_a, "pb");
-        // stack_print(*list_a, *list_b);
+        // stack_print(*list_a, *list_a);
+        while(len - 1 > target_index + sorted_count)
+        {
+            print_with_swap(*list_a, "sa");
+            print_with_rotate(*list_a, "ra");
+            ++target_index;
+        }
+        i = 0;
+        ++sorted_count;
+        // stack_print(*list_a, *list_a);
+        while(i < sorted_count)
+        {
+            print_with_rotate(*list_a, "ra");
+            ++i;
+        }
+        // stack_print(*list_a, *list_a);
     }
-    while(*list_b != NULL)
-        print_with_push(list_a, list_b, "pa");
 }
 
 void insert(List **list_a, List **list_b)
 {
-    int max_rot;
+    int rot_count;
 
     print_with_push(list_b, list_a, "pb");
     while(*list_a != NULL)
     {
         // stack_print(*list_a, *list_b);
-        max_rot = count_node(*list_b) - 1;
-        while(max_rot >= 0)
+        rot_count = count_node(*list_b) - 1;
+        while(rot_count >= 0)
         {
             if((*list_a)->num > (*list_b)->num)
                 break;
             print_with_rotate(*list_b, "rb");
-            --max_rot;
+            --rot_count;
         }
         print_with_push(list_b, list_a, "pb");
         while((*list_b)->num < (*list_b)->next->num

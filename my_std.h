@@ -30,7 +30,7 @@ void bubble(List **list_a);
 정렬안된 범위 내에서 대상을 특정하고 정렬하는 스타일
 대상부터 선정하는게 특징
 */
-void selection(List **list_a, List **list_b);
+void selection(List **list_a);
 /* 삽입 정렬
 일단 넘긴 풀(list b)에서 자리잡는 스타일
 자리 만들고 꽂는게 특징
