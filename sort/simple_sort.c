@@ -139,7 +139,7 @@ void insert(List **list_a, List **list_b)
             print_with_rotate(*list_b, "rb");
             --rot_count;
         }
-        // 아무튼 싹 돌았다면(아니면 적당한 위치에서 break에 걸렸다면) b값 추가
+        // 싹 돌았다면(아니면 적당한 위치에서 break에 걸렸다면) b값 추가
         print_with_push(list_b, list_a, "pb");
         // 현 HEAD의 next, prev 전부 작은 값이다 == 현 HEAD가 가장 크다
         while((*list_b)->num < (*list_b)->next->num
