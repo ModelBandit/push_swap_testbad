@@ -37,6 +37,11 @@ void selection(List **list_a);
 */
 void insert(List **list_a, List **list_b);
 
+// complex
+/* 병합정렬
+*/
+void my_merge(List **list_a, List **list_b, int min, int max);
+
 // visual
 int* build_number_array(size_t size);
 List *build_List(int *nums, size_t nums_size);

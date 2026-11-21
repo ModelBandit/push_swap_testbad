@@ -44,7 +44,8 @@
                 "command/push.c",
                 "data_structure/my_list.c",
                 "subject_init.c",
-                "simple_sort.c",
+                "sort/simple_sort.c",
+                "sort/complex_sort.c",
                 "push_swap.a",
                 "-o",
                 "${fileDirname}/a.out"

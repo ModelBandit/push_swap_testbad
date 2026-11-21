@@ -1,7 +1,13 @@
 #include "my_std.h"
-#include "stdio.h"
+#include <time.h>
 
-int count = 0;
+int compare_count = 0;
+
+int push_count = 0;
+int swap_count = 0;
+int rot_rrot_count = 0;
+
+int command_count = 0;
 /* 제출용 프로그램
 
 */
@@ -30,10 +36,11 @@ int main(int argc, char **argv)
     // 대충 그냥 컴파일 때렸다는 뜻
     if(argc == 1)
     {
-        bubble(&list_a);
+        // simple
+        // bubble(&list_a);
         // selection(&list_a);
-        print_count_init();
         insert(&list_a, &list_b);
+        // my_merge(&list_a, &list_b, 0, count_node(list_a)-1);
     }
     else
     {
@@ -43,7 +50,7 @@ int main(int argc, char **argv)
     // 정렬상태 검사용
     stack_print(list_a, list_b);
     // 명령어 호출 횟수 카운터
-    print_count_init();
+    print_count();
 
     // 메모리 해제
     clear_list(&list_a);

@@ -18,7 +18,8 @@ command/push.c\
 command/reverse_rotate.c\
 command/rotate.c\
 command/swap.c\
-simple_sort.c\
+sort/simple_sort.c\
+sort/complex_sort.c\
 subject_init.c\
 UI_util.c
 

@@ -1,4 +1,4 @@
-#include "my_std.h"
+#include "../my_std.h"
 
 /* 조건 v2
 데이터 탐색은 next/prev로 가능
@@ -15,14 +15,14 @@ void bubble(List **list_a)
     int sorted_count = 0;
     int i;
 
-    while(len - sorted_count > 0)
+    while(sorted_count < len)
     {
         // stack_print(*list_a, *list_a);
         i = 0;
         while(i < len - sorted_count)
         {
             // stack_print(*list_a, *list_a);
-            if((*list_a)->num > (*list_a)->next->num)
+            if(count_compare() && (*list_a)->num > (*list_a)->next->num)
             {
                 print_with_swap(*list_a, "sa");
                 // stack_print(*list_a, *list_a);
@@ -59,7 +59,7 @@ void selection(List **list_a)
         while(i < len - sorted_count)
         {
             // stack_print(*list_a, *list_b);
-            if(target_index == -1 || target_value < (*list_a)->num)
+            if( (target_index == -1 || (count_compare() && target_value < (*list_a)->num)))
             {
                 target_value = (*list_a)->num;
                 target_index = i;
@@ -91,6 +91,7 @@ void selection(List **list_a)
             ++i;
         }
         // stack_print(*list_a, *list_a);
+        // print_count();
     }
 }
 
@@ -105,7 +106,7 @@ void insert(List **list_a, List **list_b)
         rot_count = count_node(*list_b) - 1;
         while(rot_count >= 0)
         {
-            if((*list_a)->num > (*list_b)->num)
+            if(count_compare() && (*list_a)->num > (*list_b)->num)
                 break;
             print_with_rotate(*list_b, "rb");
             --rot_count;

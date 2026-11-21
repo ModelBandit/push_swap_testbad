@@ -4,7 +4,13 @@
 #include "../libft/libft.h"
 #endif
 
-extern int count;
+extern int compare_count;
+
+extern int push_count;
+extern int swap_count;
+extern int rot_rrot_count;
+
+extern int command_count;
 
 // sa, sb
 void print_with_swap(List *head, const char *str);
@@ -32,4 +38,15 @@ TAIL TO HEAD
 void print_with_reverse_rotaterotate(List *list_a, List *list_b);
 
 void swap_other_node(List **node_a, List **node_b);
-void print_count_init();
+
+int count_compare();
+
+void print_count();
+
+void print_command_count();
+
+void print_compare_count();
+
+void print_push_count();
+void print_swap_count();
+void print_rot_count();

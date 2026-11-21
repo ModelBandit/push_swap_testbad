@@ -1,6 +1,5 @@
 #include "my_std.h"
 #include <stdio.h>
-#include <time.h>
 
 
 /* 시각화 프로그램
