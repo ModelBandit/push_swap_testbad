@@ -19,8 +19,8 @@ void push_back(List **head, List *new_list);
 // 가장 마지막 노드 빼면서 반환
 List* pop(List **head);
 // 모든 원소 한 칸씩 뒤로 (마지막 노드는 맨 앞으로)
-void rotation(List *head);
+void rotation(List **head);
 // 모든 원소 한 칸씩 앞으로 (첫 노드는 마지막 노드로)
-void reverse_rotation(List *head);
+void reverse_rotation(List **head);
 // 노드 갯수 세기
 int count_node(List *head);

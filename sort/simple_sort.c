@@ -31,7 +31,7 @@ void bubble(List **list_a)
                 // stack_print(*list_a, *list_a);
             }
             // 그렇게 HEAD와 HEAD->next 중 작은 놈은 TAIL로 가게됨
-            print_with_rotate(*list_a, "ra");
+            print_with_rotate(list_a, "ra");
             ++i;
         }
         /*
@@ -43,7 +43,7 @@ void bubble(List **list_a)
         // stack_print(*list_a, *list_a);
         while(i < sorted_count)
         {
-            print_with_rotate(*list_a, "ra");
+            print_with_rotate(list_a, "ra");
             ++i;
         }
         // stack_print(*list_a, *list_a);
@@ -85,9 +85,9 @@ void selection(List **list_a)
         {
             // 그냥 rot 명령어 적게써보려는 몸부림.
             if(target_index < len / 2)
-                print_with_rotate(*list_a, "ra");
+                print_with_rotate(list_a, "ra");
             else
-                print_with_reverse_rotate(*list_a, "rra");
+                print_with_reverse_rotate(list_a, "rra");
         }
         // stack_print(*list_a, *list_a);
         // target_index + sorted_count 와 len -1
@@ -96,7 +96,7 @@ void selection(List **list_a)
         {
             // swap rot를 반복하여 뒤로 쭉 빼냄
             print_with_swap(*list_a, "sa");
-            print_with_rotate(*list_a, "ra");
+            print_with_rotate(list_a, "ra");
             ++target_index;
         }
         // 최종적으로 가장 큰 값은 정렬안된 노드 중 가장 끝(정렬노드의 최상단)에 위치하게됨
@@ -106,7 +106,7 @@ void selection(List **list_a)
         // 버블때와 마찬가지로 현재 HEAD는 정렬된 값이니 다시 뒤로 넘겨서 다음 비교를 준비함.
         while(i < sorted_count)
         {
-            print_with_rotate(*list_a, "ra");
+            print_with_rotate(list_a, "ra");
             ++i;
         }
         // stack_print(*list_a, *list_a);
@@ -136,7 +136,7 @@ void insert(List **list_a, List **list_b)
             if(count_compare() && (*list_a)->num > (*list_b)->num)
                 break;
             // rot를 돌며 a의 HEAD가 B에 안맞는다면 B의 크기만큼 순회함.
-            print_with_rotate(*list_b, "rb");
+            print_with_rotate(list_b, "rb");
             --rot_count;
         }
         // 싹 돌았다면(아니면 적당한 위치에서 break에 걸렸다면) b값 추가
@@ -144,7 +144,7 @@ void insert(List **list_a, List **list_b)
         // 현 HEAD의 next, prev 전부 작은 값이다 == 현 HEAD가 가장 크다
         while((*list_b)->num < (*list_b)->next->num
            || (*list_b)->num < (*list_b)->prev->num)
-            print_with_rotate(*list_b, "rb");// 그런 HEAD가 될때까지 rot 반복
+            print_with_rotate(list_b, "rb");// 그런 HEAD가 될때까지 rot 반복
 
         // stack_print(*list_a, *list_b);
     }

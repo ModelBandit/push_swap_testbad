@@ -23,19 +23,19 @@ void print_with_push(List **dst, List **src, const char *str);
 /* ra rb
 HEAD TO TAIL
 */
-void print_with_rotate(List *head, const char *str);
+void print_with_rotate(List **head, const char *str);
 /* rr
 HEAD TO TAIL
 */
-void print_with_rotaterotate(List *list_a, List *list_b);
+void print_with_rotaterotate(List **list_a, List **list_b);
 /* rra rrb
 TAIL TO HEAD
 */
-void print_with_reverse_rotate(List *head, const char *str);
+void print_with_reverse_rotate(List **head, const char *str);
 /* rrr
 TAIL TO HEAD
 */
-void print_with_reverse_rotaterotate(List *list_a, List *list_b);
+void print_with_reverse_rotaterotate(List **list_a, List **list_b);
 
 void swap_other_node(List **node_a, List **node_b);
 

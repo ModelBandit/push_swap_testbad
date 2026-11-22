@@ -67,45 +67,21 @@ List* pop(List **head)
     return cur_node;
 }
 // HEAD TO TAIL
-void rotation(List *head)
+void rotation(List **head)
 {
-    if(head == NULL)
+    if(*head == NULL)
         return;
 
-    List *cur_node = head;
-    List *next_node = cur_node->next;
-    int temp = cur_node->num;
-
-    while(cur_node->next != head)
-    {
-        // 앞에 노드의 num을 현재 노드에 저장
-        cur_node->num = next_node->num;
-
-        // 각 노드를 다음 노드로 변경
-        cur_node = cur_node->next;
-        next_node = next_node->next;
-    }
-    cur_node->num = temp;
+    *head = (*head)->next;
 }
 
 // TAIL TO HEAD
-void reverse_rotation(List *head)
+void reverse_rotation(List **head)
 {
-    if(head == NULL)
+    if(*head == NULL)
         return;
 
-    List *cur_node = head;
-    List *prev_node = cur_node->prev;
-    int temp = cur_node->num;
-
-    while(cur_node->prev != head)
-    {
-        cur_node->num = prev_node->num;
-        
-        cur_node = cur_node->prev;
-        prev_node = prev_node->prev;
-    }
-    cur_node->num = temp;
+    *head = (*head)->prev;
 }
 
 int count_node(List *head)

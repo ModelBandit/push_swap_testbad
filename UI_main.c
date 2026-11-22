@@ -54,36 +54,36 @@ int main()
         {
             if(input[1] == 'a' && list_a != NULL)
             {
-                rotation(list_a);
+                rotation(&list_a);
             }
             else if(input[1] == 'b' && list_b != NULL)
             {
-                rotation(list_b);
+                rotation(&list_b);
             }
             else if(input[1] == 'r')
             {
                 if(list_a != NULL)
-                    rotation(list_a);
+                    rotation(&list_a);
                 if(list_b != NULL)
-                    rotation(list_b);
+                    rotation(&list_b);
             }
         }
         else if(ft_strncmp(input, "rr", 2) != 0)
         {
             if(input[2] == 'a' && list_a != NULL)
             {
-                reverse_rotation(list_a);
+                reverse_rotation(&list_a);
             }
             else if(input[2] == 'b' && list_b != NULL)
             {
-                reverse_rotation(list_b);
+                reverse_rotation(&list_b);
             }
             else if(input[2] == 'r')
             {
                 if(list_a != NULL)
-                    reverse_rotation(list_a);
+                    reverse_rotation(&list_a);
                 if(list_b != NULL)
-                    reverse_rotation(list_b);
+                    reverse_rotation(&list_b);
             }
         }
         else

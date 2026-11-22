@@ -1,5 +1,4 @@
 #include "my_std.h"
-#include <time.h>
 
 int compare_count = 0;
 
@@ -9,7 +8,7 @@ int rot_rrot_count = 0;
 
 int command_count = 0;
 /* 제출용 프로그램
-
+\
 */
 int main(int argc, char **argv)
 {
@@ -37,7 +36,7 @@ int main(int argc, char **argv)
     if(argc == 1)
     {
         // simple
-        bubble(&list_a);
+        // bubble(&list_a);
         // selection(&list_a);
         // insert(&list_a, &list_b);
         // my_merge(&list_a, &list_b, 0, count_node(list_a)-1);
